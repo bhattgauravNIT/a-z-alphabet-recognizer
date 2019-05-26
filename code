@@ -12,7 +12,7 @@ from keras.layers import Flatten
 
 # initializing CNN
 classifier = Sequential()
-#adding convolutional layer
+# adding convolutional layer
 classifier.add(Convolution2D(32,3,3, activation = "relu", input_shape = (32,32,3)))
 # adding pooling layer
 classifier.add(MaxPooling2D(pool_size = (2,2)))
@@ -24,7 +24,7 @@ classifier.add(MaxPooling2D(pool_size = (2,2)))
 classifier.add(Flatten())
 # full connection
 classifier.add(Dense(output_dim = 26, activation = 'softmax'))
-# compiling
+# compiling our model
 classifier.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['accuracy'])
 from keras.preprocessing.image import ImageDataGenerator
 
@@ -34,7 +34,7 @@ train_datagen = ImageDataGenerator(rescale=1./255,
                                    zoom_range=0.2,
                                    horizontal_flip=True)
 
-#Same for the test set as well
+
 test_datagen = ImageDataGenerator(rescale=1./255)
 
 #get the training data set using the flow from directory method
